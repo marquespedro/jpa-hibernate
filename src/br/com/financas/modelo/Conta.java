@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.com.financas.converter.DadoContaConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -36,6 +38,7 @@ public class Conta {
 	private String agencia;
 	
 	@Column(name = "numero")	
+	@Convert(converter = DadoContaConverter.class)
 	private String numero;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="conta")
